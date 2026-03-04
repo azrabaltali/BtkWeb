@@ -1,12 +1,12 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Basic.Models;  // ★★★ ApplicationUser için BU OLMALI!
 
 namespace Basic.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
-        {
-        }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Bootcamp> Bootcamps => Set<Bootcamp>();
         public DbSet<Ogrenci> Ogrenciler => Set<Ogrenci>();

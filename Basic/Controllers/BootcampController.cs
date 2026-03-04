@@ -1,16 +1,18 @@
 using Basic.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Basic.Controllers
 {
+    [Authorize]
     public class BootcampController : Controller
     {
         private readonly DataContext _context;
         public BootcampController(DataContext context)
         {
-           _context = context; 
-        }       
+            _context = context;
+        }
         public async Task<IActionResult> Index(string searchString)
         {
             var Bootcampler = _context.Bootcamps.AsQueryable();
@@ -19,18 +21,22 @@ namespace Basic.Controllers
             {
                 ViewBag.SearchString = searchString;
 
-                Bootcampler = Bootcampler.Where(o=>o.BootcampName!.Contains(searchString));
+                Bootcampler = Bootcampler
+                    .Where(o => o.BootcampName!.Contains(searchString));
             }
+
             return View(await Bootcampler.ToListAsync());
         }
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> Create(Bootcamp model, IFormFile imageFile)
         {
-             var allowedExtensions = new[] { ".jpg", ".png", ".jpeg" };
+            var allowedExtensions = new[] { ".jpg", ".png", ".jpeg" };
             var extensions = Path.GetExtension(imageFile.FileName);
             var randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extensions}");
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomFileName);

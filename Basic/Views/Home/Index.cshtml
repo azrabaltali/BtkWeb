@@ -2,7 +2,75 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .hero {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .section {
+        margin: 40px 0;
+        text-align: center;
+    }
+    .section h2 {
+        color: #6a11cb;
+        margin-bottom: 20px;
+    }
+    .card-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        width: 250px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+        color: #2575fc;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="hero">
+    <h1>Bootcamp Kariyer Yazılım</h1>
+    <p>Yazılım dünyasında kariyerine hızlı bir başlangıç yap! Bootcamp programlarımızla modern teknolojileri öğren, projeler geliştir ve sektöre hazır hale gel.</p>
 </div>
+
+<div class="section">
+    <h2>Programlarımız</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Web Geliştirme</h3>
+            <p>HTML, CSS, JavaScript ve ASP.NET MVC ile modern web uygulamaları geliştirmeyi öğren.</p>
+        </div>
+        <div class="card">
+            <h3>Oyun Geliştirme</h3>
+            <p>Unity ve C# kullanarak oyun dünyasına adım at, kendi projelerini hayata geçir.</p>
+        </div>
+        <div class="card">
+            <h3>Veri ve Yapay Zeka</h3>
+            <p>Python, Pandas ve scikit-learn ile veri analizi ve makine öğrenmesi temellerini keşfet.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Kariyer Desteği</h2>
+    <p>Bootcamp süresince ve sonrasında mentorluk, CV hazırlama ve iş görüşmesi desteği sağlıyoruz.</p>
+</div>
+

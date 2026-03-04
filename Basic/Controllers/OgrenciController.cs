@@ -1,9 +1,11 @@
 using Basic.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Basic.Controllers
 {
+    [Authorize]
     public class OgrenciController : Controller
     {
         private readonly DataContext _context;
@@ -22,6 +24,7 @@ namespace Basic.Controllers
                 ogrenciler = ogrenciler
                     .Where(o => o.OgrenciAd!.Contains(searchString));
             }
+
             return View(await ogrenciler.ToListAsync());
         }
 
